@@ -32,12 +32,24 @@
   .section-label::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--red); }
 
   /* GRID — passt sich an normale Videos, Shorts und Reels an */
-  .video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 3rem;
-    align-items: start;
-  }
+.video-grid-landscape {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.video-grid-portrait {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .video-grid-landscape { grid-template-columns: 1fr; }
+  .video-grid-portrait { grid-template-columns: repeat(2, 1fr); }
+}
 
   /* NORMALES VIDEO 16:9 */
   .video-wrapper {
@@ -56,12 +68,12 @@
   }
 
   /* SHORT 9:16 hochkant */
-  .video-wrapper.short {
-    padding-bottom: 0;
-    height: 520px;
-    max-width: 293px;
-    margin: 0 auto;
-  }
+.video-wrapper.short {
+  padding-bottom: 0;
+  height: 380px;
+  max-width: 214px;
+  margin: 0 auto;
+}
   .video-wrapper.short + .video-meta { max-width: 293px; margin: 1rem auto 0; }
 
   /* INSTAGRAM REEL — wrapper damit es ins Grid passt */
@@ -124,63 +136,68 @@
 
   <div class="video-grid">
 
-    <!-- VIDEO 1 — normales YouTube-Video 16:9 -->
-    <div class="video-item">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/cV9kkFAodmU" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="video-title">Timothe Beach Hotel & Apartments in Song Cau</div>
-        <div class="video-info">2026 · Image Film</div>
-      </div>
-    </div>
+<!-- QUERFORMAT VIDEOS — 2 pro Zeile -->
+<div class="video-grid-landscape">
 
-    <!-- VIDEO 2 — normales YouTube-Video 16:9 -->
-    <div class="video-item">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/LLGpMzxQaSE" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="video-title">Hopfengarten Bamberg</div>
-        <div class="video-info">2024 · Image Film</div>
-      </div>
+  <div class="video-item">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/cV9kkFAodmU" allowfullscreen></iframe>
     </div>
+    <div class="video-meta">
+      <div class="video-title">Timothe Beach Hotel & Apartments in Song Cau</div>
+      <div class="video-info">2026 · Image Film</div>
+    </div>
+  </div>
 
-    <!-- VIDEO 3 — normales YouTube-Video 16:9 -->
-    <div class="video-item">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/EwAiI73cDck" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="video-title">Berlin Vlog</div>
-        <div class="video-info">2026 · Vlog</div>
-      </div>
+  <div class="video-item">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/LLGpMzxQaSE" allowfullscreen></iframe>
     </div>
+    <div class="video-meta">
+      <div class="video-title">Hopfengarten Bamberg</div>
+      <div class="video-info">2024 · Image Film</div>
+    </div>
+  </div>
 
-    <!-- SHORT — Bayerische Traditionsküche (9:16 hochkant) -->
-    <div class="video-item">
-      <div class="video-wrapper short">
-        <iframe src="https://www.youtube.com/embed/BaJFocd08Uw" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="video-title">Bayerische Traditionsküche <span class="badge">Short</span></div>
-        <div class="video-info">YouTube Short</div>
-      </div>
+  <div class="video-item">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/EwAiI73cDck" allowfullscreen></iframe>
     </div>
+    <div class="video-meta">
+      <div class="video-title">Berlin Vlog</div>
+      <div class="video-info">2026 · Vlog</div>
+    </div>
+  </div>
 
-    <!-- INSTAGRAM REEL — Ikea Pop-up-Store Eröffnung -->
-    <div class="video-item">
-      <div class="reel-wrapper">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/reel/DOQfRQCjKMI/?utm_source=ig_embed&utm_campaign=loading"
-          data-instgrm-version="14">
-        </blockquote>
-      </div>
-      <div class="video-meta">
-        <div class="video-title">Ikea Pop-up-Store Eröffnung <span class="badge ig">Reel</span></div>
-        <div class="video-info">Instagram · inFranken.de</div>
-      </div>
+</div>
+
+<!-- HOCHKANT (SHORTS & REELS) — bis 4 pro Zeile -->
+<div class="video-grid-portrait">
+
+  <div class="video-item">
+    <div class="video-wrapper short">
+      <iframe src="https://www.youtube.com/embed/BaJFocd08Uw" allowfullscreen></iframe>
     </div>
+    <div class="video-meta">
+      <div class="video-title">Bayerische Traditionsküche <span class="badge">Short</span></div>
+      <div class="video-info">YouTube Short</div>
+    </div>
+  </div>
+
+  <div class="video-item">
+    <div class="reel-wrapper">
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DOQfRQCjKMI/?utm_source=ig_embed&utm_campaign=loading"
+        data-instgrm-version="14">
+      </blockquote>
+    </div>
+    <div class="video-meta">
+      <div class="video-title">Ikea Pop-up-Store Eröffnung <span class="badge ig">Reel</span></div>
+      <div class="video-info">Instagram · inFranken.de</div>
+    </div>
+  </div>
+
+</div>
 
     <!-- ============================================================
     WEITERES NORMALES VIDEO hinzufügen:
