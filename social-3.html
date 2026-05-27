@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media — Sista Eva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --black: #080808; --white: #f0ece6; --red: #c63434; --border: rgba(240,236,230,0.1); --border-red: rgba(198,52,52,0.3); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4vw; border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); background: rgba(8,8,8,0.88); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: rgba(240,236,230,0.45); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+
+  .page-header { padding: 10rem 4vw 4rem; border-bottom: 1px solid var(--border); }
+  .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,236,230,0.35); text-decoration: none; transition: color 0.2s; margin-bottom: 2rem; }
+  .back-link:hover { color: var(--red); }
+  .back-link::before { content: '←'; }
+  .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 10vw, 9rem); line-height: 0.88; letter-spacing: 0.03em; }
+  .page-title span { color: var(--red); }
+  .page-desc { margin-top: 1.5rem; max-width: 500px; font-size: 0.9rem; color: rgba(240,236,230,0.45); line-height: 1.9; }
+
+  .video-section { padding: 5rem 4vw 8rem; }
+  .section-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 3rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--red); }
+
+  /* GRID — passt sich an normale Videos, Shorts und Reels an */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* NORMALES VIDEO 16:9 */
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #0f0f0f;
+    overflow: hidden;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* SHORT 9:16 hochkant */
+  .video-wrapper.short {
+    padding-bottom: 0;
+    height: 520px;
+    max-width: 293px;
+    margin: 0 auto;
+  }
+  .video-wrapper.short + .video-meta { max-width: 293px; margin: 1rem auto 0; }
+
+  /* INSTAGRAM REEL — wrapper damit es ins Grid passt */
+  .reel-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  /* Instagram blockquote überschreiben damit es zu unserem Design passt */
+  .reel-wrapper .instagram-media {
+    background: #0f0f0f !important;
+    box-shadow: none !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    min-width: unset !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .video-meta { margin-top: 1rem; }
+  .video-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.3rem; }
+  .video-info { font-size: 0.78rem; color: rgba(240,236,230,0.35); letter-spacing: 0.08em; }
+
+  .badge { display: inline-block; padding: 0.15rem 0.6rem; background: var(--red); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-left: 0.5rem; vertical-align: middle; position: relative; top: -2px; }
+  .badge.ig { background: #833ab4; }
+
+  .back-bottom { padding: 4rem 4vw; border-top: 1px solid var(--border); }
+  .back-bottom a { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; color: rgba(240,236,230,0.3); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 0.75rem; }
+  .back-bottom a:hover { color: var(--red); }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 4vw; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: rgba(240,236,230,0.18); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .video-grid { grid-template-columns: 1fr; }
+    .page-title { font-size: clamp(3.5rem, 16vw, 6rem); }
+    .video-wrapper.short { height: 420px; max-width: 236px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">SISTA <span>EVA</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <a href="index.html" class="back-link">Zurück zur Übersicht</a>
+  <h1 class="page-title">SOCIAL <span>MEDIA</span></h1>
+  <p class="page-desc">Content für Instagram, TikTok, YouTube. Schnell, präzise, auf den Punkt.</p>
+</div>
+
+<section class="video-section">
+  <div class="section-label">Ausgewählte Arbeiten</div>
+
+  <div class="video-grid">
+
+    <!-- VIDEO 1 — normales YouTube-Video 16:9 -->
+    <div class="video-item">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/cV9kkFAodmU" allowfullscreen></iframe>
+      </div>
+      <div class="video-meta">
+        <div class="video-title">Timothe Beach Hotel & Apartments in Song Cau</div>
+        <div class="video-info">2026 · Image Film</div>
+      </div>
+    </div>
+
+    <!-- VIDEO 2 — normales YouTube-Video 16:9 -->
+    <div class="video-item">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/LLGpMzxQaSE" allowfullscreen></iframe>
+      </div>
+      <div class="video-meta">
+        <div class="video-title">Hopfengarten Bamberg</div>
+        <div class="video-info">2024 · Image Film</div>
+      </div>
+    </div>
+
+    <!-- VIDEO 3 — normales YouTube-Video 16:9 -->
+    <div class="video-item">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/EwAiI73cDck" allowfullscreen></iframe>
+      </div>
+      <div class="video-meta">
+        <div class="video-title">Berlin Vlog</div>
+        <div class="video-info">2026 · Vlog</div>
+      </div>
+    </div>
+
+    <!-- SHORT — Bayerische Traditionsküche (9:16 hochkant) -->
+    <div class="video-item">
+      <div class="video-wrapper short">
+        <iframe src="https://www.youtube.com/embed/BaJFocd08Uw" allowfullscreen></iframe>
+      </div>
+      <div class="video-meta">
+        <div class="video-title">Bayerische Traditionsküche <span class="badge">Short</span></div>
+        <div class="video-info">YouTube Short</div>
+      </div>
+    </div>
+
+    <!-- INSTAGRAM REEL — Ikea Pop-up-Store Eröffnung -->
+    <div class="video-item">
+      <div class="reel-wrapper">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/reel/DOQfRQCjKMI/?utm_source=ig_embed&utm_campaign=loading"
+          data-instgrm-version="14">
+        </blockquote>
+      </div>
+      <div class="video-meta">
+        <div class="video-title">Ikea Pop-up-Store Eröffnung <span class="badge ig">Reel</span></div>
+        <div class="video-info">Instagram · inFranken.de</div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+    WEITERES NORMALES VIDEO hinzufügen:
+    <div class="video-item">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/DEINE_VIDEO_ID" allowfullscreen></iframe>
+      </div>
+      <div class="video-meta">
+        <div class="video-title">Titel</div>
+        <div class="video-info">Jahr · Kategorie</div>
+      </div>
+    </div>
+
+    WEITEREN SHORT hinzufügen:
+    <div class="video-item">
+      <div class="video-wrapper short">
+        <iframe src="https://www.youtube.com/embed/DEINE_SHORT_ID" allowfullscreen></iframe>
+      </div>
+      <div class="video-meta">
+        <div class="video-title">Titel <span class="badge">Short</span></div>
+        <div class="video-info">Jahr · Plattform</div>
+      </div>
+    </div>
+
+    WEITERES INSTAGRAM REEL hinzufügen:
+    1. Gehe auf Instagram → dein Reel → die drei Punkte → "Einbetten"
+    2. Kopiere den <blockquote ...> Code
+    3. Ersetze den blockquote unten, lass das Script-Tag am Ende der Seite stehen
+    <div class="video-item">
+      <div class="reel-wrapper">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/reel/DEINE_REEL_ID/?utm_source=ig_embed&utm_campaign=loading"
+          data-instgrm-version="14">
+        </blockquote>
+      </div>
+      <div class="video-meta">
+        <div class="video-title">Titel <span class="badge ig">Reel</span></div>
+        <div class="video-info">Instagram</div>
+      </div>
+    </div>
+    ============================================================ -->
+
+  </div>
+</section>
+
+<div class="back-bottom">
+  <a href="index.html">← Zurück zur Übersicht</a>
+</div>
+
+<footer>
+  <span>© 2025 Sista Eva</span>
+  <span>Film Editor — Germany</span>
+</footer>
+
+<!-- Instagram Embed Script — muss einmal am Ende der Seite stehen, lädt alle Reels -->
+<script async src="https://www.instagram.com/embed.js"></script>
+
+</body>
+</html>
