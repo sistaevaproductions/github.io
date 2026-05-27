@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eva Maria Wohlers — Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --black: #080808; --white: #f0ece6; --red: #c63434; --muted: #2a2a2a; --border: rgba(240,236,230,0.1); --border-red: rgba(198,52,52,0.3); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4vw; border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); background: rgba(8,8,8,0.88); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: rgba(240,236,230,0.45); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 4vw 6rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 75% 35%, rgba(198,52,52,0.07) 0%, transparent 65%), radial-gradient(ellipse 35% 50% at 15% 75%, rgba(198,52,52,0.04) 0%, transparent 60%); }
+  .hero-tag { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; position: relative; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-tag::before { content: ''; display: inline-block; width: 2.5rem; height: 1px; background: var(--red); }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 13vw, 13rem); line-height: 0.88; letter-spacing: 0.03em; position: relative; max-width: 950px; }
+  .hero-title .outline { color: transparent; -webkit-text-stroke: 1px rgba(240,236,230,0.28); }
+  .hero-title .red { color: var(--red); }
+  .hero-sub { margin-top: 2.5rem; max-width: 400px; font-size: 0.92rem; color: rgba(240,236,230,0.5); line-height: 1.9; position: relative; }
+  .hero-cta { display: flex; gap: 1.5rem; margin-top: 3rem; position: relative; }
+  .btn { padding: 0.8rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(240,236,230,0.4); color: var(--white); background: transparent; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .btn:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+  .btn-red { background: var(--red); border-color: var(--red); color: var(--white); }
+  .btn-red:hover { background: #a82b2b; border-color: #a82b2b; }
+
+  .showreel { padding: 8rem 4vw; border-top: 1px solid var(--border); }
+  .section-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 3rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--red); }
+  .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #0f0f0f; overflow: hidden; }
+  .video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .video-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; border: 1px dashed var(--border-red); color: rgba(240,236,230,0.2); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .play-icon { width: 62px; height: 62px; border: 1px solid var(--border-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .play-icon::after { content: ''; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent rgba(198,52,52,0.5); margin-left: 5px; }
+
+  .work { padding: 8rem 4vw; border-top: 1px solid var(--border); }
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); margin-top: 3rem; border: 1px solid var(--border); }
+  .work-card { background: var(--black); padding: 2.5rem; transition: background 0.25s; cursor: pointer; position: relative; text-decoration: none; color: inherit; display: block; }
+  .work-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--red); transition: width 0.3s; }
+  .work-card:hover { background: #111; }
+  .work-card:hover::after { width: 100%; }
+  .work-card-number { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(240,236,230,0.07); line-height: 1; margin-bottom: 1.5rem; }
+  .work-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.06em; margin-bottom: 0.75rem; color: var(--white); }
+  .work-card-desc { font-size: 0.83rem; color: rgba(240,236,230,0.4); line-height: 1.8; }
+  .work-card-arrow { margin-top: 2rem; font-size: 1rem; color: var(--red); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+  .work-card:hover .work-card-arrow { opacity: 1; transform: translateX(6px); }
+
+  .about { padding: 8rem 4vw; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .about-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 5vw, 5.5rem); line-height: 0.95; letter-spacing: 0.03em; margin-bottom: 2rem; }
+  .about-title .red { color: var(--red); }
+  .about-text { font-size: 0.92rem; color: rgba(240,236,230,0.55); line-height: 1.95; margin-bottom: 1.5rem; }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .skill-tag { padding: 0.3rem 0.9rem; border: 1px solid var(--border); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,236,230,0.4); transition: border-color 0.2s, color 0.2s; }
+  .skill-tag:hover { border-color: var(--border-red); color: rgba(240,236,230,0.7); }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .stat { border-top: 1px solid var(--border); padding-top: 1.5rem; }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 3.8rem; color: var(--red); line-height: 1; }
+  .stat-label { font-size: 0.72rem; color: rgba(240,236,230,0.35); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.5rem; }
+
+  .contact { padding: 8rem 4vw; border-top: 1px solid var(--border); text-align: center; }
+  .contact-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 9vw, 8rem); line-height: 0.9; letter-spacing: 0.03em; margin-bottom: 3rem; }
+  .contact-title .outline { color: transparent; -webkit-text-stroke: 1px rgba(240,236,230,0.22); }
+  .contact-title .red { color: var(--red); }
+  .contact-email { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: rgba(240,236,230,0.45); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; transition: color 0.2s, border-color 0.2s; }
+  .contact-email:hover { color: var(--white); border-color: var(--red); }
+  .social-links { display: flex; justify-content: center; gap: 2.5rem; margin-top: 3rem; }
+  .social-links a { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(240,236,230,0.3); text-decoration: none; transition: color 0.2s; position: relative; }
+  .social-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--red); transition: width 0.25s; }
+  .social-links a:hover { color: var(--white); }
+  .social-links a:hover::after { width: 100%; }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 4vw; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: rgba(240,236,230,0.18); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  @media (max-width: 768px) {
+    .about { grid-template-columns: 1fr; gap: 3rem; }
+    .nav-links { display: none; }
+    .hero-title { font-size: clamp(4rem, 18vw, 7rem); }
+    .contact-title { font-size: clamp(3rem, 14vw, 6rem); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">SISTA <span>EVA</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Available for projects</div>
+  <h1 class="hero-title">
+    EDITS<br>
+    <span class="outline">EMOTIONS</span><br>
+    <span class="red">EDGE</span>
+  </h1>
+  <p class="hero-sub">
+    Videos machen Geschichten, Erfahrungen und Emotionen haltbar und erlebbar — Dokus, Musikvideos, Image Filme, Vlogs, Content. Basierend in Deutschland.
+  </p>
+  <div class="hero-cta">
+    <a href="#work" class="btn btn-red">Meine Arbeit</a>
+    <a href="#contact" class="btn">Kontakt</a>
+  </div>
+</section>
+
+<section class="showreel" id="showreel">
+  <div class="section-label">Showreel 2025</div>
+  <div class="video-wrapper">
+    <!-- SHOWREEL: YouTube-ID nach "embed/" eintragen, dann den placeholder-div löschen und Kommentarzeichen entfernen -->
+    <!-- <iframe src="https://www.youtube.com/embed/SHOWREEL_VIDEO_ID" allowfullscreen></iframe> -->
+    <div class="video-placeholder">
+      <div class="play-icon"></div>
+      Showreel — YouTube-Link hier einfügen
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="section-label">Selected Work</div>
+  <div class="work-grid">
+    <a href="documentary.html" class="work-card">
+      <div class="work-card-number">01</div>
+      <div class="work-card-title">Documentary</div>
+      <p class="work-card-desc">Langform-Storytelling. Dokumentarfilme, Portraits, Reportagen.</p>
+      <div class="work-card-arrow">→</div>
+    </a>
+    <a href="social.html" class="work-card">
+      <div class="work-card-number">02</div>
+      <div class="work-card-title">Social Media</div>
+      <p class="work-card-desc">Content für Instagram, TikTok, YouTube. Schnell, präzise, auf den Punkt.</p>
+      <div class="work-card-arrow">→</div>
+    </a>
+    <a href="musicvideo.html" class="work-card">
+      <div class="work-card-number">03</div>
+      <div class="work-card-title">Music Video</div>
+      <p class="work-card-desc">Visuelle Sprache für Musik — von Indie bis Major Label.</p>
+      <div class="work-card-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <div class="section-label">Über mich</div>
+    <h2 class="about-title">SCHNITT IST<br><span class="red">ERZÄHLUNG.</span></h2>
+    <p class="about-text">Located in der Post-Produktion kreiere ich, allein oder gemeinsam mit anderen Filmschaffenden, Videos, die andere mitreißen. Seit 2022 bin ich stetig am Lernen, ob im Studium, als Teammitglied eines Onlinejournals oder privat. Ich liebe es, Atmosphäre zu erschaffen und den Clips mit Sound Design und Color Grading Tiefe einzuhauchen. Aktuell mit Premiere Pro, bald auch mit DaVinci Resolve.</p>
+    <p class="about-text">Basierend in Erlangen. Offen für Remote-Projekte.</p>
+    <div class="skills-list">
+      <span class="skill-tag">Premiere Pro</span>
+      <span class="skill-tag">DaVinci Resolve</span>
+      <span class="skill-tag">Farbkorrektur</span>
+      <span class="skill-tag">Sound Design</span>
+      <span class="skill-tag">MXF / H.264</span>
+    </div>
+  </div>
+  <div class="about-stats">
+    <div class="stat"><div class="stat-number">3</div><div class="stat-label">Jahre Erfahrung</div></div>
+    <div class="stat"><div class="stat-number">—</div><div class="stat-label">Projekte</div></div>
+    <div class="stat"><div class="stat-number">DE</div><div class="stat-label">Standort</div></div>
+    <div class="stat"><div class="stat-number">∞</div><div class="stat-label">Geschichten</div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-label" style="justify-content:center;">Kontakt</div>
+  <h2 class="contact-title">LASS UNS<br><span class="red">ZUSAMMEN</span><br><span class="outline">ARBEITEN.</span></h2>
+  <a href="mailto:eva.wohlers@live.de" class="contact-email">eva.wohlers@live.de</a>
+  <div class="social-links">
+    <a href="https://www.facebook.com/profile.php?id=100083336476623" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/evamariawohlers/" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/eva-wohlers-441a2920b/" target="_blank">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Sista Eva</span>
+  <span>Film Editor — Germany</span>
+</footer>
+</body>
+</html>
