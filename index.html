@@ -21,8 +21,8 @@
 
   .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 7rem 4vw 4rem; position: relative; }
   .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 75% 35%, rgba(198,52,52,0.07) 0%, transparent 65%), radial-gradient(ellipse 35% 50% at 15% 75%, rgba(198,52,52,0.04) 0%, transparent 60%); }
-  .hero-row { display: flex; align-items: stretch; gap: 2rem; position: relative; }
-  .hero-content { flex: 1 1 0; position: relative; }
+  .hero-row { display: flex; align-items: center; gap: 2rem; position: relative; }
+  .hero-content { flex: 2 1 0; position: relative; }
   .hero-tag { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .hero-tag::before { content: ''; display: inline-block; width: 2.5rem; height: 1px; background: var(--red); }
   .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 8.5rem); line-height: 0.88; letter-spacing: 0.03em; }
@@ -30,7 +30,7 @@
   .hero-title .red { color: var(--red); }
   .hero-sub { margin-top: 2.5rem; max-width: 400px; font-size: 0.92rem; color: rgba(240,236,230,0.5); line-height: 1.9; }
   .hero-cta { display: flex; gap: 1.5rem; margin-top: 3rem; }
-  .hero-visual { flex: 1 1 0; position: relative; overflow: hidden; min-height: 0; }
+  .hero-visual { flex: 1 1 0; position: relative; overflow: hidden; aspect-ratio: 4 / 5; max-height: 65vh; align-self: center; }
   .hero-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
   .hero-visual-placeholder { text-align: center; color: rgba(240,236,230,0.2); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2rem; line-height: 2; }
   .btn { padding: 0.8rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(240,236,230,0.4); color: var(--white); background: transparent; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
@@ -90,7 +90,7 @@
 
   @media (max-width: 900px) {
     .hero-row { flex-direction: column; }
-    .hero-visual { min-height: 45vh; order: -1; }
+    .hero-visual { max-height: 40vh; width: 100%; align-self: stretch; order: -1; }
   }
   @media (max-width: 768px) {
     .about { grid-template-columns: 1fr; gap: 3rem; }
@@ -124,9 +124,7 @@
         <span class="red">EDGE</span>
       </h1>
       <p class="hero-sub">
-        Geschichten machen Videos und Videos machen Geschichten.  
-        - Doku, Imagefilm, Aftermovie und Storytelling. 
-        Basierend in Leipzig.
+        Videos machen Geschichten, Erfahrungen und Emotionen haltbar und erlebbar — Doku, Imagefilm, Aftermovie und Storytelling. Basierend in Leipzig.
       </p>
       <div class="hero-cta">
         <a href="#work" class="btn btn-red">Meine Arbeit</a>
@@ -140,7 +138,7 @@
 </section>
  
 <section class="showreel" id="showreel">
-  <div class="section-label">Showreel 2026</div>
+  <div class="section-label">Showreel 2025</div>
   <div class="video-wrapper">
     <!-- SHOWREEL: YouTube-ID nach "embed/" eintragen, dann den placeholder-div löschen und Kommentarzeichen entfernen -->
     <!-- <iframe src="https://www.youtube.com/embed/SHOWREEL_VIDEO_ID" allowfullscreen></iframe> -->
@@ -157,13 +155,13 @@
     <a href="documentary.html" class="work-card">
       <div class="work-card-number">01</div>
       <div class="work-card-title">Documentary/<br>Storytelling</div>
-      <p class="work-card-desc">Dokumentationen, Portraits, Reportagen.</p>
+      <p class="work-card-desc">Langform-Storytelling. Dokumentarfilme, Portraits, Reportagen.</p>
       <div class="work-card-arrow">→</div>
     </a>
     <a href="musicvideo.html" class="work-card">
       <div class="work-card-number">02</div>
       <div class="work-card-title">Aftermovie/<br>Musikschnitt</div>
-      <p class="work-card-desc">Visuelle Sprache für Songs und Events. Harmonisch, rhythmisch, mitreißend.</p>
+      <p class="work-card-desc">Visuelle Sprache für Musik und Festivals — schnell, rhythmisch, mitreißend.</p>
       <div class="work-card-arrow">→</div>
     </a>
     <a href="imagefilm.html" class="work-card">
@@ -184,15 +182,15 @@
 <section class="about" id="about">
   <div>
     <div class="section-label">Über mich</div>
-    <h2 class="about-title">SCHNITT BEDEUTET<br><span class="red">LIEBE ZUM DETAIL</span></h2>
-    <p class="about-text">Ich kreiere, allein oder gemeinsam mit anderen Filmschaffenden, Videos, die andere mitreißen, unterhalten oder bilden. Seit 2022 bringe ich meinen Händen und Augen bei, was ein gutes Video ausmacht. Ich liebe es, Atmosphäre zu erschaffen und den Clips mit Pacing, Sound Design und Color Grading Tiefe einzuhauchen. Aktuell mit Fokus auf Post-Produktion/ Schnitt, doch die Videographie sieht mich schon kommen.</p>
-    <p class="about-text">Based in Leipzig. Offen für Remote-Projekte.</p>
+    <h2 class="about-title">SCHNITT IST<br><span class="red">ERZÄHLUNG.</span></h2>
+    <p class="about-text">Located in der Post-Produktion kreiere ich, allein oder gemeinsam mit anderen Filmschaffenden, Videos, die andere mitreißen. Seit 2022 bin ich stetig am Lernen, ob im Studium, als Teammitglied eines Onlinejournals oder privat. Ich liebe es, Atmosphäre zu erschaffen und den Clips mit Pacing, Sound Design und Color Grading Tiefe einzuhauchen. Aktuell mit Premiere Pro, bald auch mit DaVinci Resolve.</p>
+    <p class="about-text">Based in Erlangen. Offen für Remote-Projekte.</p>
     <div class="skills-list">
       <span class="skill-tag">Premiere Pro</span>
-      <span class="skill-tag">After Effects</span>
+      <span class="skill-tag">DaVinci Resolve</span>
       <span class="skill-tag">Farbkorrektur</span>
-      <span class="skill-tag">Sounddesign/ Audio-Mastering</span>
-      <span class="skill-tag">Illustrator</span>
+      <span class="skill-tag">Sound Design</span>
+      <span class="skill-tag">MXF / H.264</span>
     </div>
     <div class="about-more">
       <a href="about.html">Mehr über mich →</a>
