@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Über mich — Eva Maria Wohlers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --black: #080808; --white: #f0ece6; --red: #c63434; --muted: #2a2a2a; --border: rgba(240,236,230,0.1); --border-red: rgba(198,52,52,0.3); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4vw; border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); background: rgba(8,8,8,0.88); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: rgba(240,236,230,0.45); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a.active { color: var(--red); }
+
+  .section-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 3rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--red); }
+
+  /* Header */
+  .about-header { padding: 10rem 4vw 3rem; position: relative; }
+  .about-header .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 15% 20%, rgba(198,52,52,0.06) 0%, transparent 65%); pointer-events: none; }
+  .about-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 6.5rem); line-height: 0.9; letter-spacing: 0.03em; margin-bottom: 2rem; position: relative; }
+  .about-title .red { color: var(--red); }
+  .about-lead { font-size: 1.05rem; color: rgba(240,236,230,0.6); max-width: 560px; line-height: 1.9; position: relative; }
+
+  /* Article + sticky image, side by side */
+  .about-article { padding: 2rem 4vw 7rem; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 5rem; align-items: start; }
+  .about-article-inner { max-width: 640px; }
+  .about-article p { font-size: 1rem; color: rgba(240,236,230,0.62); margin-bottom: 1.8rem; line-height: 1.95; }
+  .about-article p:first-of-type { font-size: 1.15rem; color: rgba(240,236,230,0.85); }
+
+  .about-image-col { position: sticky; top: 7rem; align-self: start; }
+  .about-image-col .frame { position: relative; overflow: hidden; background: #0f0f0f; border: 1px solid var(--border); aspect-ratio: 4 / 5; }
+  .about-image-col img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(15%) contrast(1.05); }
+
+  .pull-quote { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 3.2vw, 2.5rem); line-height: 1.15; color: var(--red); letter-spacing: 0.02em; margin: 3.5rem 0; padding-left: 1.5rem; border-left: 2px solid var(--red); }
+
+  /* Skills recap */
+  .about-skills { padding: 6rem 4vw; border-top: 1px solid var(--border); }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2.5rem; }
+  .skill-tag { padding: 0.3rem 0.9rem; border: 1px solid var(--border); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,236,230,0.4); transition: border-color 0.2s, color 0.2s; }
+  .skill-tag:hover { border-color: var(--border-red); color: rgba(240,236,230,0.7); }
+
+  /* CTA */
+  .about-cta { padding: 8rem 4vw; border-top: 1px solid var(--border); text-align: center; }
+  .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 7vw, 6rem); line-height: 0.95; letter-spacing: 0.03em; margin-bottom: 2.5rem; }
+  .cta-title .red { color: var(--red); }
+  .btn { display: inline-block; padding: 0.9rem 2.4rem; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(240,236,230,0.4); color: var(--white); background: transparent; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .btn:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+  .btn-red { background: var(--red); border-color: var(--red); }
+  .btn-red:hover { background: #a82b2b; border-color: #a82b2b; }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 4vw; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: rgba(240,236,230,0.18); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  @media (max-width: 900px) {
+    .about-article { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image-col { position: static; order: -1; max-width: 340px; }
+    .about-header { padding: 8rem 6vw 2rem; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">SISTA <span>EVA</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="about-header">
+  <div class="hero-bg"></div>
+  <div class="section-label">Über mich</div>
+  <h1 class="about-title">HEY, ICH<br>BIN <span class="red">EVA.</span></h1>
+  <p class="about-lead">Ich mache Videos, durch die etwas bleibt — eine Geschichte, ein Gefühl, eine Perspektive, die man sonst so nicht hätte. Bevor wir über meine Arbeit reden, will ich dir erzählen, wer dahintersteckt.</p>
+</section>
+
+<section class="about-article">
+  <div class="about-article-inner">
+    <p>Ich hab nicht schon immer gewusst, dass ich Editorin werde. Mein Weg dahin ging über ein duales Verwaltungsstudium, das ich nach eineinhalb Jahren beendet habe. Die Corona-Zeit hat's damals nicht leichter gemacht, aber der eigentliche Grund war ein anderer: Ich habe niemanden dort gesehen, dessen Job ich eigentlich haben wollte.</p>
+
+    <div class="pull-quote">Das war der Moment, in dem mir klar wurde: Ich will etwas machen, das mich mit Sinn erfüllt.</div>
+
+    <p>Seitdem bin ich diesen Weg konsequent gegangen. Kommunikationswissenschaft studiert, mich in jedem Praxismodul fürs Visuelle entschieden, mir Premiere Pro und After Effects größtenteils selbst beigebracht, weil es an der Uni schlicht zu kurz kam; als Werkstudent dem Video-Team eines Onlinejournals angeschlossen.</p>
+
+    <p>Meine kreative Ader hab ich vermutlich von meiner Mutter, die selbst Innenarchitektin studiert hat und mir schon früh ein Gespür fürs Detail mitgegeben hat. Von meinem Vater hab ich mitgenommen, Dinge vernünftig anzugehen — vor allem, wenn ich mit anderen zusammenarbeite: gut durchdenken, klar kommunizieren, verlässlich sein.</p>
+
+    <p>Was mich am Editing wirklich reizt: die Momente, in denen aus echtem Material eine Geschichte wird, die berührt. Bei einer Dokumentation über eine kleine Brauerei hab ich das zum ersten Mal richtig gespürt — heute ist das Video für die Menschen dort auch eine Erinnerung an jemanden, der nicht mehr da ist. Das hat mir gezeigt, was Schnitt eigentlich kann.</p>
+
+    <p>Wir passen gut zusammen, wenn du eine echte Geschichte zu erzählen hast. Das kann eine Dokumentation sein, die sich Zeit nimmt, echte Menschen und Momente einzufangen, oder ein Imagefilm, der dein Unternehmen, deine Marke oder dein Team so zeigt, wie sie wirklich sind, statt glattgebügelt und unpersönlich. Mir geht es im Schnitt nie nur um schöne Bilder, sondern um eine Botschaft, die hängen bleibt.</p>
+
+    <p>Bei Projekten, wo nicht viele Kreative gleichzeitig am Tisch sitzen, übernehme ich gerne die Rolle derjenigen, die ein Projekt von der Idee bis zum Schnitt eigenhändig trägt. Wichtig ist mir dabei immer ein echter Austausch: Feedback, gemeinsames Weiterdenken, kein reines Abarbeiten einer Bestellliste.</p>
+
+    <p>Dann sind wir ein Match, ob als gemeinsames Projekt oder weil ich für dich umsetze, was dir wichtig ist.</p>
+  </div>
+
+  <div class="about-image-col">
+    <div class="frame">
+      <img src="images/eva-portrait.jpg" alt="Eva Maria Wohlers, Portrait">
+    </div>
+  </div>
+</section>
+
+<section class="about-skills">
+  <div class="section-label">Womit ich arbeite</div>
+  <div class="skills-list">
+    <span class="skill-tag">Premiere Pro</span>
+    <span class="skill-tag">After Effects</span>
+    <span class="skill-tag">Farbkorrektur</span>
+    <span class="skill-tag">Sound Design</span>
+  </div>
+</section>
+
+<section class="about-cta">
+  <h2 class="cta-title">LASS UNS<br><span class="red">ZUSAMMEN</span><br>ARBEITEN.</h2>
+  <a href="index.html#contact" class="btn btn-red">Zum Kontakt</a>
+</section>
+
+<footer>
+  <span>© 2025 Sista Eva</span>
+  <span>Film Editor — Germany</span>
+</footer>
+</body>
+</html>
