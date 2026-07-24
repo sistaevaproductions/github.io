@@ -31,7 +31,7 @@
   .hero-sub { margin-top: 2.5rem; max-width: 400px; font-size: 0.92rem; color: rgba(240,236,230,0.5); line-height: 1.9; }
   .hero-cta { display: flex; gap: 1.5rem; margin-top: 3rem; }
   .hero-visual { flex: 1 1 0; position: relative; overflow: hidden; min-height: 0; }
-  .hero-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
   .hero-visual-placeholder { text-align: center; color: rgba(240,236,230,0.2); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2rem; line-height: 2; }
   .btn { padding: 0.8rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(240,236,230,0.4); color: var(--white); background: transparent; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
   .btn:hover { background: var(--white); color: var(--black); border-color: var(--white); }
@@ -48,15 +48,15 @@
   .play-icon::after { content: ''; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent rgba(198,52,52,0.5); margin-left: 5px; }
 
   .work { padding: 8rem 4vw; border-top: 1px solid var(--border); }
-  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1px; background: var(--border); margin-top: 3rem; border: 1px solid var(--border); max-width: 900px; aspect-ratio: 1 / 1; }
-  .work-card { background: var(--black); padding: 2.5rem; transition: background 0.25s; cursor: pointer; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: center; }
+  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1px; background: var(--border); margin-top: 3rem; border: 1px solid var(--border); max-width: 620px; aspect-ratio: 1 / 1; }
+  .work-card { background: var(--black); padding: 1.6rem; transition: background 0.25s; cursor: pointer; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; }
   .work-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--red); transition: width 0.3s; }
   .work-card:hover { background: #111; }
   .work-card:hover::after { width: 100%; }
-  .work-card-number { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(240,236,230,0.07); line-height: 1; margin-bottom: 1.5rem; }
-  .work-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.06em; margin-bottom: 0.75rem; color: var(--white); }
-  .work-card-desc { font-size: 0.83rem; color: rgba(240,236,230,0.4); line-height: 1.8; }
-  .work-card-arrow { margin-top: 2rem; font-size: 1rem; color: var(--red); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+  .work-card-number { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: rgba(240,236,230,0.07); line-height: 1; margin-bottom: 0.9rem; }
+  .work-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.06em; margin-bottom: 0.5rem; color: var(--white); line-height: 1.15; }
+  .work-card-desc { font-size: 0.74rem; color: rgba(240,236,230,0.4); line-height: 1.6; }
+  .work-card-arrow { margin-top: 1rem; font-size: 0.9rem; color: var(--red); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
   .work-card:hover .work-card-arrow { opacity: 1; transform: translateX(6px); }
 
   .about { padding: 8rem 4vw; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
