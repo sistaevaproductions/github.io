@@ -15,14 +15,12 @@
   :root { --black: #080808; --white: #f0ece6; --red: #c63434; --muted: #2a2a2a; --border: rgba(240,236,230,0.1); --border-red: rgba(198,52,52,0.3); }
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
-
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4vw; border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); background: rgba(8,8,8,0.88); }
   .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
   .nav-logo span { color: var(--red); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { color: rgba(240,236,230,0.45); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--white); }
-
   .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 7rem 4vw 4rem; position: relative; }
   .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 75% 35%, rgba(198,52,52,0.07) 0%, transparent 65%), radial-gradient(ellipse 35% 50% at 15% 75%, rgba(198,52,52,0.04) 0%, transparent 60%); }
   .hero-row { display: flex; align-items: center; gap: 2rem; position: relative; }
@@ -41,7 +39,6 @@
   .btn:hover { background: var(--white); color: var(--black); border-color: var(--white); }
   .btn-red { background: var(--red); border-color: var(--red); color: var(--white); }
   .btn-red:hover { background: #a82b2b; border-color: #a82b2b; }
-
   .showreel { padding: 8rem 4vw; border-top: 1px solid var(--border); }
   .section-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 3rem; display: flex; align-items: center; gap: 0.75rem; }
   .section-label::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--red); }
@@ -52,22 +49,17 @@
   .video-placeholder-text { color: rgba(240,236,230,0.35); font-size: 0.85rem; letter-spacing: 0.06em; }
   .play-icon { width: 62px; height: 62px; border: 1px solid var(--border-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
   .play-icon::after { content: ''; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent rgba(198,52,52,0.5); margin-left: 5px; }
-
   .work { padding: 8rem 4vw; border-top: 1px solid var(--border); }
   .work-content { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; }
   .work-image { height: 620px; overflow: hidden; }
   .work-image img { height: 100%; width: auto; display: block; }
-  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); width: 620px; max-width: 100%; aspect-ratio: 1 / 1; margin-left: auto; }
-  .work-card { background: var(--black); padding: 1.6rem; transition: background 0.25s; cursor: pointer; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; }
-  .work-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--red); transition: width 0.3s; }
-  .work-card:hover { background: #111; }
-  .work-card:hover::after { width: 100%; }
-  .work-card-number { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: rgba(240,236,230,0.07); line-height: 1; margin-bottom: 0.9rem; }
-  .work-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.06em; margin-bottom: 0.5rem; color: var(--white); line-height: 1.15; }
-  .work-card-desc { font-size: 0.74rem; color: rgba(240,236,230,0.4); line-height: 1.6; }
-  .work-card-arrow { margin-top: 1rem; font-size: 0.9rem; color: var(--red); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
-  .work-card:hover .work-card-arrow { opacity: 1; transform: translateX(6px); }
-
+  .work-featured { width: 620px; max-width: 100%; margin-left: auto; }
+  .video-meta { margin-top: 1.2rem; }
+  .video-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.3rem; }
+  .video-info { font-size: 0.78rem; color: var(--red); letter-spacing: 0.08em; text-transform: uppercase; }
+  .video-context { font-size: 0.85rem; color: rgba(240,236,230,0.45); margin-top: 0.6rem; line-height: 1.7; }
+  .featured-cta-row { margin-top: 3rem; text-align: center; }
+  .featured-cta-row .btn { display: inline-flex; align-items: center; gap: 0.6rem; }
   .about { padding: 8rem 4vw; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
   .about-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 5vw, 5.5rem); line-height: 0.95; letter-spacing: 0.03em; margin-bottom: 2rem; }
   .about-title .red { color: var(--red); }
@@ -82,7 +74,6 @@
   .about-more { margin-top: 2rem; }
   .about-more a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); text-decoration: none; border-bottom: 1px solid var(--border-red); padding-bottom: 0.3rem; transition: color 0.2s, border-color 0.2s; }
   .about-more a:hover { color: var(--white); border-color: var(--white); }
-
   .contact { padding: 8rem 4vw; border-top: 1px solid var(--border); text-align: center; }
   .contact-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 9vw, 8rem); line-height: 0.9; letter-spacing: 0.03em; margin-bottom: 3rem; }
   .contact-title .outline { color: transparent; -webkit-text-stroke: 1px rgba(240,236,230,0.22); }
@@ -94,9 +85,7 @@
   .social-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--red); transition: width 0.25s; }
   .social-links a:hover { color: var(--white); }
   .social-links a:hover::after { width: 100%; }
-
   footer { border-top: 1px solid var(--border); padding: 2rem 4vw; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: rgba(240,236,230,0.18); letter-spacing: 0.08em; text-transform: uppercase; }
-
   @media (max-width: 900px) {
     .hero-row { flex-direction: column; }
     .hero-visual { max-height: 40vh; width: 100%; align-self: stretch; order: -1; }
@@ -109,13 +98,11 @@
     .work-content { flex-direction: column; }
     .work-image { height: auto; width: 100%; max-width: 400px; margin: 0 auto; }
     .work-image img { height: auto; width: 100%; }
-    .work-grid { width: 100%; margin-left: 0; }
-    .work-card { aspect-ratio: 1 / 1; }
+    .work-featured { width: 100%; margin-left: 0; }
   }
 </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-logo">SISTA <span>EVA</span></a>
   <ul class="nav-links">
@@ -124,7 +111,6 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-row">
@@ -148,7 +134,7 @@
     </div>
   </div>
 </section>
- 
+
 <section class="showreel" id="showreel">
   <div class="section-label">Showreel 2026</div>
   <div class="video-wrapper">
@@ -161,42 +147,30 @@
     </div>
   </div>
 </section>
- 
+
 <section class="work" id="work">
   <div class="section-label">Selected Work</div>
   <div class="work-content">
     <div class="work-image">
       <img src="images/eva-work.jpg" alt="Eva Maria Wohlers am Laptop">
     </div>
-    <div class="work-grid">
-    <a href="documentary.html" class="work-card">
-      <div class="work-card-number">01</div>
-      <div class="work-card-title">Documentary/<br>Storytelling</div>
-      <p class="work-card-desc">Dokumentarfilme, Portraits, Reportagen.</p>
-      <div class="work-card-arrow">→</div>
-    </a>
-    <a href="musicvideo.html" class="work-card">
-      <div class="work-card-number">02</div>
-      <div class="work-card-title">Aftermovie/<br>Musikschnitt</div>
-      <p class="work-card-desc">Visuelle Sprache für Musik und Events. Harmonisch, rhythmisch, mitreißend.</p>
-      <div class="work-card-arrow">→</div>
-    </a>
-    <a href="imagefilm.html" class="work-card">
-      <div class="work-card-number">03</div>
-      <div class="work-card-title">Imagefilm</div>
-      <p class="work-card-desc">Unternehmen, Marken und Teams authentisch in Szene gesetzt.</p>
-      <div class="work-card-arrow">→</div>
-    </a>
-    <a href="interview.html" class="work-card">
-      <div class="work-card-number">04</div>
-      <div class="work-card-title">Talking Head/<br>Interview</div>
-      <p class="work-card-desc">Klare, fokussierte Interviewformate mit Substanz.</p>
-      <div class="work-card-arrow">→</div>
-    </a>
+    <div class="work-featured">
+      <!-- LATEST WORK: um das Featured-Video zu wechseln, einfach die YouTube-ID
+           im iframe unten ersetzen und Titel/Info/Context anpassen. -->
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/ixERkpuydN4?si=T_Qy_kiqmbJ3_mDM" allowfullscreen></iframe>
+      </div>
+      <div class="video-meta">
+        <div class="video-info">Latest Work · 2026 · Dokumentarfilm</div>
+        <div class="video-title">Das Handwerk der Buchvergoldung: Eine Dokumentation</div>
+        <div class="video-context">Zur Museumsauflösung sollte den Werkzeugen die Ehre zukommen, die ihnen gebührt. Durch Recherche, Erstellen und Sammeln von Footage, Scriptwriting und Schnitt entstand dieser kleine Bildungsfilm.</div>
+      </div>
     </div>
   </div>
+  <div class="featured-cta-row">
+    <a href="portfolio.html" class="btn btn-red">Show Portfolio →</a>
+  </div>
 </section>
-
 <section class="about" id="about">
   <div>
     <div class="section-label">About me</div>
@@ -220,7 +194,6 @@
     <div class="stat"><div class="stat-number">∞</div><div class="stat-label">Stories</div></div>
   </div>
 </section>
-
 <section class="contact" id="contact">
   <div class="section-label" style="justify-content:center;">Contact</div>
   <h2 class="contact-title">TELL ME<br><span class="outline">YOUR</span><br><span class="red">IDEA.</span></h2>
@@ -231,7 +204,6 @@
     <a href="https://www.linkedin.com/in/eva-wohlers-441a2920b/" target="_blank">LinkedIn</a>
   </div>
 </section>
-
 <footer>
   <span>© 2025 Sista Eva</span>
   <span>Film Editor — Germany</span>
