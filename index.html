@@ -21,7 +21,7 @@
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { color: rgba(240,236,230,0.45); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--white); }
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 7rem 4vw 4rem; position: relative; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 7rem 4vw 4rem; position: relative; overflow-x: hidden; }
   .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 75% 35%, rgba(198,52,52,0.07) 0%, transparent 65%), radial-gradient(ellipse 35% 50% at 15% 75%, rgba(198,52,52,0.04) 0%, transparent 60%); }
   .hero-row { display: flex; align-items: center; gap: 2rem; position: relative; }
   .hero-content { flex: 2 1 0; position: relative; }
@@ -32,6 +32,22 @@
   .hero-title .red { color: var(--red); }
   .hero-sub { margin-top: 2.5rem; max-width: 400px; font-size: 0.92rem; color: rgba(240,236,230,0.5); line-height: 1.9; }
   .hero-cta { display: flex; gap: 1.5rem; margin-top: 3rem; }
+  /* Intro-Animation: Headline-Zeilen, Tag, Absatz und Buttons fliegen/faden nacheinander ein */
+  @keyframes heroFlyIn { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes heroSoftFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes heroFadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-title .line { display: inline-block; opacity: 0; animation: heroFlyIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .hero-title .line-1 { animation-delay: 0.15s; }
+  .hero-title .line-2 { animation-delay: 0.4s; }
+  .hero-title .line-3 { animation-delay: 0.65s; }
+  .hero-sub { opacity: 0; animation: heroSoftFade 1s ease-out forwards; animation-delay: 1.45s; }
+  .hero-tag { opacity: 0; animation: heroFlyIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 2.25s; }
+  .hero-cta .btn { opacity: 0; animation: heroFadeUp 0.6s ease-out forwards; }
+  .hero-cta .btn:nth-child(1) { animation-delay: 2.85s; }
+  .hero-cta .btn:nth-child(2) { animation-delay: 3s; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title .line, .hero-sub, .hero-tag, .hero-cta .btn { animation: none; opacity: 1; transform: none; }
+  }
   .hero-visual { flex: 1 1 0; position: relative; overflow: hidden; aspect-ratio: 4 / 5; max-height: 65vh; align-self: center; }
   .hero-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block; }
   .hero-visual-placeholder { text-align: center; color: rgba(240,236,230,0.2); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2rem; line-height: 2; }
@@ -117,9 +133,9 @@
     <div class="hero-content">
       <div class="hero-tag">Available for projects</div>
       <h1 class="hero-title">
-        EDITS<br>
-        <span class="outline">EMOTIONS</span><br>
-        <span class="red">EDGE</span>
+        <span class="line line-1">EDITS</span><br>
+        <span class="line line-2 outline">EMOTIONS</span><br>
+        <span class="line line-3 red">EDGE</span>
       </h1>
       <p class="hero-sub">
         Stories make videos, and videos make stories — Dokumentary, Imagefilm, Aftermovie & visual Storytelling. Based in Leipzig.
@@ -189,7 +205,7 @@
   </div>
   <div class="about-stats">
     <div class="stat"><div class="stat-number">3</div><div class="stat-label">Years of Experience</div></div>
-    <div class="stat"><div class="stat-number">open for</div><div class="stat-label">collab</div></div>
+    <div class="stat"><div class="stat-number">offen für</div><div class="stat-label">Projects</div></div>
     <div class="stat"><div class="stat-number">DE</div><div class="stat-label">Base</div></div>
     <div class="stat"><div class="stat-number">∞</div><div class="stat-label">Stories</div></div>
   </div>
