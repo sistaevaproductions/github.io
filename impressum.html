@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Tag Manager: wird erst nach Einwilligung geladen (siehe Cookie-Banner am Seitenende) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function loadGoogleTag() {
+    if (window.googleTagLoaded) return;
+    window.googleTagLoaded = true;
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-58C35MX8';
+    document.head.appendChild(s);
+  }
+</script>
+
+<title>Impressum — Eva Maria Wohlers</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --black: #080808; --white: #f0ece6; --red: #c63434; --muted: #2a2a2a; --border: rgba(240,236,230,0.1); --border-red: rgba(198,52,52,0.3); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 4vw; border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); background: rgba(8,8,8,0.88); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: rgba(240,236,230,0.45); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .btn { padding: 0.8rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(240,236,230,0.4); color: var(--white); background: transparent; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .btn:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+  .btn-red { background: var(--red); border-color: var(--red); color: var(--white); }
+  .btn-red:hover { background: #a82b2b; border-color: #a82b2b; }
+  .section-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--red); }
+
+  /* Impressum-Text */
+  .legal { max-width: 780px; margin: 0 auto; padding: 9rem 4vw 6rem; }
+  .legal h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 0.95; letter-spacing: 0.03em; margin-bottom: 3rem; }
+  .legal h1 .red { color: var(--red); }
+  .legal h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 0.06em; font-weight: 400; margin: 3rem 0 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+  .legal p { font-size: 0.92rem; color: rgba(240,236,230,0.6); line-height: 1.9; margin-bottom: 1rem; }
+  .legal a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--border-red); transition: border-color 0.2s; }
+  .legal a:hover { border-color: var(--white); }
+  .legal .link-row { margin-top: 3rem; }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 4vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.72rem; color: rgba(240,236,230,0.18); letter-spacing: 0.08em; text-transform: uppercase; }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+
+  /* Cookie-Banner */
+  .cookie-banner { position: fixed; left: 4vw; right: 4vw; bottom: 1.5rem; z-index: 200; max-width: 640px; padding: 1.5rem; background: rgba(8,8,8,0.96); border: 1px solid var(--border-red); backdrop-filter: blur(14px); display: none; }
+  .cookie-banner.show { display: block; }
+  .cookie-banner p { font-size: 0.85rem; color: rgba(240,236,230,0.6); line-height: 1.7; margin-bottom: 1.2rem; }
+  .cookie-banner p a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--border-red); }
+  .cookie-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .cookie-settings { background: none; border: none; padding: 0; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; cursor: pointer; transition: color 0.2s; }
+  .cookie-settings:hover { color: var(--white); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">SISTA <span>EVA</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="legal">
+  <div class="section-label">Rechtliches</div>
+  <h1>IMPRES<span class="red">SUM</span></h1>
+
+  <h2>Angaben gemäß § 5 DDG</h2>
+  <p>
+    Eva Maria Wohlers<br>
+    <!-- HIER FEHLT NOCH: Anschrift (Straße, Hausnummer, PLZ, Ort). Ohne ladungsfähige Anschrift ist das Impressum nicht vollständig. -->
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>E-Mail: <a href="mailto:eva.wohlers@live.de">eva.wohlers@live.de</a></p>
+
+  <h2>Datenschutz</h2>
+  <p>Informationen zur Verarbeitung deiner Daten findest du in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+
+  <div class="link-row">
+    <a href="index.html" class="btn">← Zurück zur Startseite</a>
+  </div>
+</main>
+
+<footer>
+  <span>© 2025 Sista Eva</span>
+  <span class="footer-links">
+    <a href="index.html">Startseite</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <button type="button" class="cookie-settings" id="cookie-settings">Cookie-Einstellungen</button>
+  </span>
+  <span>Film Editor — Germany</span>
+</footer>
+
+<!-- Cookie-Banner: Google Tag wird nur nach Klick auf "Akzeptieren" geladen -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen">
+  <p>Ich möchte besser verstehen, wie meine Website genutzt wird, und setze dafür Google Analytics ein. Das passiert nur, wenn du zustimmst. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>. Du kannst deine Entscheidung jederzeit unten im Footer ändern.</p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-red" id="cookie-accept">Akzeptieren</button>
+    <button type="button" class="btn" id="cookie-decline">Ablehnen</button>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'sista-cookie-consent';
+  var banner = document.getElementById('cookie-banner');
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function store(value) { try { localStorage.setItem(KEY, value); } catch (e) {} }
+  function show() { banner.classList.add('show'); }
+  function hide() { banner.classList.remove('show'); }
+
+  var current = stored();
+  if (current === 'granted') { loadGoogleTag(); }
+  else if (current !== 'denied') { show(); }
+
+  document.getElementById('cookie-accept').addEventListener('click', function () {
+    store('granted'); hide(); loadGoogleTag();
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function () {
+    var wasGranted = stored() === 'granted';
+    store('denied'); hide();
+    if (wasGranted) { location.reload(); }
+  });
+  document.getElementById('cookie-settings').addEventListener('click', show);
+})();
+</script>
+</body>
+</html>
