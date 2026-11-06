@@ -3,6 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Tag Manager: wird erst nach Einwilligung geladen (siehe Cookie-Banner am Seitenende) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function loadGoogleTag() {
+    if (window.googleTagLoaded) return;
+    window.googleTagLoaded = true;
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-58C35MX8';
+    document.head.appendChild(s);
+  }
+</script>
+
 <title>Eva Maria Wohlers — Editor</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -102,6 +117,14 @@
   .social-links a:hover { color: var(--white); }
   .social-links a:hover::after { width: 100%; }
   footer { border-top: 1px solid var(--border); padding: 2rem 4vw; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: rgba(240,236,230,0.18); letter-spacing: 0.08em; text-transform: uppercase; }
+  /* Cookie-Banner */
+  .cookie-banner { position: fixed; left: 4vw; right: 4vw; bottom: 1.5rem; z-index: 200; max-width: 640px; padding: 1.5rem; background: rgba(8,8,8,0.96); border: 1px solid var(--border-red); backdrop-filter: blur(14px); display: none; }
+  .cookie-banner.show { display: block; }
+  .cookie-banner p { font-size: 0.85rem; color: rgba(240,236,230,0.6); line-height: 1.7; margin-bottom: 1.2rem; }
+  .cookie-banner p a { color: var(--white); text-decoration: none; border-bottom: 1px solid var(--border-red); }
+  .cookie-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .cookie-settings { background: none; border: none; padding: 0; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; cursor: pointer; transition: color 0.2s; }
+  .cookie-settings:hover { color: var(--white); }
   @media (max-width: 900px) {
     .hero-row { flex-direction: column; }
     .hero-visual { max-height: 40vh; width: 100%; align-self: stretch; order: -1; }
@@ -216,7 +239,41 @@
 </section>
 <footer>
   <span>© 2025 Sista Eva</span>
+  <button type="button" class="cookie-settings" id="cookie-settings">Cookie-Einstellungen</button>
   <span>Film Editor — Germany</span>
 </footer>
+
+<!-- Cookie-Banner: Google Tag wird nur nach Klick auf "Akzeptieren" geladen -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen">
+  <p>Ich möchte besser verstehen, wie meine Website genutzt wird, und setze dafür Google Analytics ein. Das passiert nur, wenn du zustimmst. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>. Du kannst deine Entscheidung jederzeit unten im Footer ändern.</p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-red" id="cookie-accept">Akzeptieren</button>
+    <button type="button" class="btn" id="cookie-decline">Ablehnen</button>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'sista-cookie-consent';
+  var banner = document.getElementById('cookie-banner');
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function store(value) { try { localStorage.setItem(KEY, value); } catch (e) {} }
+  function show() { banner.classList.add('show'); }
+  function hide() { banner.classList.remove('show'); }
+
+  var current = stored();
+  if (current === 'granted') { loadGoogleTag(); }
+  else if (current !== 'denied') { show(); }
+
+  document.getElementById('cookie-accept').addEventListener('click', function () {
+    store('granted'); hide(); loadGoogleTag();
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function () {
+    var wasGranted = stored() === 'granted';
+    store('denied'); hide();
+    if (wasGranted) { location.reload(); }
+  });
+  document.getElementById('cookie-settings').addEventListener('click', show);
+})();
+</script>
 </body>
 </html>
